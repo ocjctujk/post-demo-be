@@ -1,9 +1,12 @@
 const express = require("express");
 const connectDB = require("./db");
 
-const port = 8080;
+const port = 8088;
 
 const app = express();
+app.use(express.json())
+const blogRoute = require("./routes/api/blogs");
+app.use("/", blogRoute);
 
 connectDB();
 
