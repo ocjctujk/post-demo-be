@@ -1,4 +1,5 @@
 const Comment = require("../models/comment");
+const Post = require("../models/post");
 
 const getComments = async (req, res) => {
   try {
@@ -17,7 +18,8 @@ const createComment = async (req, res) => {
       return res.status(404).json({ error: "Post not found" });
     }
     await comment.save();
-    post.comments.push(comment);
+    post.comments.push(comment.id);
+    await post.save();
     res.status(200).json(comment);
   } catch (error) {
     res.status(400).json({ error: error.message });

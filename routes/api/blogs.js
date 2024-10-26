@@ -9,6 +9,6 @@ router.put("/posts/:id", postController.updatePost);
 router.delete("/posts/:id", postController.deletePost);
 
 router.get("/posts/:postId/comments", commentsController.getComments);
-router.get("/comments", commentsController.createComment);
+router.post("/comments", commentsController.createComment);
 
 module.exports = router;
